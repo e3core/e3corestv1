@@ -1,0 +1,49 @@
+- ley de ohm.
+- conexiones en serie paralelo y mixta de resistencias.
+- ampliacion de rango de medicion(voltimetro y amperimetro).
+- determinacion indirecta de resistencias.
+- conexion puente de resistencias.
+- divisor de tension.
+- resistencia y temperatura.
+- potencia electrica.
+- trabajo electrico.
+- conversion de energia y rendimiento.
+- calor electrico.
+- electroquimica(electrolisis,elementos galvanicos, carga y descarga)
+- campo magnetico.
+- campo electrico.
+- corriente alterna.
+- inductividad en el circuito de corriente alterna.
+- conexion en serie y paralelo de inductancia y resistor activo.
+- capacidad en el circuito de corriente alterna.
+- conexion en serie y paralelo de condensadores y resistor activo.
+- conexion en serie y paralelo de condensadores ,inductacia y resistor activo.
+- compensacion en corriente alterna monofasica.
+- corriente trifasica.
+- compensacion de corriente trifasica.
+- transformador.
+- maquinas electricas.
+- calculo de conductores en corriente continua y corriente alterna.
+- calculo de conductores en corriente trifasica.
+- instalaciones electricas(medidas de proteccion,metodos de verificacion,tecnica de iluminacion.
+- rectificacion.
+- transistor.
+- sistemas de numeros binarios.
+- calculo elemental.
+- teorema de pitagoras(funciones trigonometricas)
+- fuerzas.
+- par(torque),palanca.
+- sistema de poleas.
+- velocidad.
+- accionamiento por correas.
+- accionamiento por ruedas dentadas.
+- accionamiento por tornillo sin fin.
+- transmision multiple.
+- transformacion de par.
+- trabajo mecanico y potencia.
+- conversiones.
+
+
+
+
+
