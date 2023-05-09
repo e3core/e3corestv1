@@ -283,15 +283,12 @@ void resistenciasSerieParalelo(){
 
     }
 }
-
+/* Aqui se calcula los diferentes rangos de un voltimetro y de un amperimetro */
 void ampliacionRangoMedicion(){
-    float dato1,dato2,dato3,dato4,dato5;
-    int indice;
-    string texto,consulta;
-    MagnitudElectrica* voltimetro;
-    MagnitudElectrica* amperimetro;
-    MagnitudElectrica* puente;
-    MagnitudElectrica* determinacion;
+    int indice,indice2,cantidad;
+    string texto,texto2,pregunta;
+    string texto3[100];
+    Magnitud* magnitud = nullptr;
 
     while(true){
         texto = " ########E3.coreSoftwarev1###############\n"
@@ -305,52 +302,44 @@ void ampliacionRangoMedicion(){
         indice = IngresoDigito(1,5,texto);
         switch(indice){
             case 1:
-            int indice10;
             
             texto = " Calcular valores del voltimetro : \n"
                     "1--> Resistor en serie teniendo la tension total y a tension de mecanismo de medicion \n"
                     "2--> Resistor en serie teniendo la resistencia interna del mecanismo de medicion \n"
                     "3--> Factor de ampliacion del rango de medicion ";
                         
-                    indice10 = IngresoDigito(1,3,texto);
+                    indice2 = IngresoDigito(1,3,texto);
                     system("clear");
-                    switch (indice10){
+                    switch (indice2){
                         case 1:
-                        cout<<"  ########E3.coreSoftwarev1############### "<<endl;
-                        cout<<" Ingrese valor de la tension total :"<<endl;
-                        dato1 = IngresoValor();
-                        cout<<" Ingrese valor de la tension del mecanismo de medicion: "<<endl;
-                        dato2 = IngresoValor();
-                        cout<<" Ingrese valor de la corriente del mecanismo de medicion "<<endl;
-                        dato3 = IngresoValor();
-                        voltimetro = new MagnitudElectrica(dato1,dato2,dato3);
-                        voltimetro->funcionDr();
-                        cout<<"\n  El resistor total es : "<<voltimetro->getDato4()<<endl;
-                        delete voltimetro;
+                        cantidad = 3;
+                        texto3[0]= " la tension total :";
+                        texto3[1]= " la tension del mecanismo de medicion: ";                       
+                        texto3[2]= " la corriente del mecanismo de medicion ";
+                        magnitud = datos(cantidad,texto3);
+                        magnitud->funcionDr();
+                        cout<<"\n  El resistor total es : "<<magnitud->getDato4()<<endl;
+                        delete magnitud;
                         break;
 
                         case 2:
-                        cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                        cout<<" Ingrese valor del factor de ampliacion del rango de medicion "<<endl;
-                        dato1 = IngresoValor();
-                        cout<<" Ingrese la resistencia interna del mecanismo de medicion "<<endl;
-                        dato3 = IngresoValor();
-                        dato2 = 1;
-                        voltimetro = new MagnitudElectrica(dato1,dato2,dato3);
-                        voltimetro->funcionMr();
-                        cout<<"\n El resistor total es : "<<voltimetro->getDato4()<<endl;
-                        delete voltimetro;
+                        cantidad = 3;
+                        texto3[0]= " factor de ampliacion del rango de medicion ";
+                        texto3[1]= "1 ";
+                        texto3[2]= " la resistencia interna del mecanismo de medicion ";
+                        magnitud = datos(cantidad,texto3);
+                        magnitud->funcionMr();
+                        cout<<"\n El resistor total es : "<<magnitud->getDato4()<<endl;
+                        delete magnitud;
 
                         case 3:
-                        cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                        cout<<" Ingrese valor de la tension total :"<<endl;
-                        dato1 = IngresoValor();
-                        cout<<" Ingrese valor de la tension del mecanismo de medicion: "<<endl;
-                        dato2 = IngresoValor();
-                        voltimetro = new MagnitudElectrica(dato1,dato2);
-                        voltimetro->funcionD();
-                        cout<<" El factor de ampliacion del voltimetro es: "<<voltimetro->getDato4()<<endl;
-                        delete voltimetro;       
+                        cantidad = 2;
+                        texto3[0]= " la tension total :";
+                        texto3[1]= " la tension del mecanismo de medicion: ";
+                        magnitud = datos(cantidad,texto3);
+                        magnitud->funcionD();
+                        cout<<" El factor de ampliacion del voltimetro es: "<<magnitud->getDato4()<<endl;
+                        delete magnitud;       
                     
                     }
 
@@ -360,117 +349,93 @@ void ampliacionRangoMedicion(){
             break;
 
             case 2:
-            int indice11;
-            
             texto =  " Calcular valores del amperimetro : \n"
                     "1--> Resistor en paralelo teniendo la corriente total y la corriente de mecanismo de medicion \n"
                     "2--> Resistor en serie teniendo la resistencia interna del mecanismo de medicion \n"
                     "3--> Factor de ampliacion del rango de medicion ";
-            indice11 = IngresoDigito(1,3,texto);
+            indice2 = IngresoDigito(1,3,texto);
 
-            switch(indice11){
+            switch(indice2){
                 case 1:
-                cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                cout<<" Ingrese valor de la corriente total: "<<endl;
-                dato2 = IngresoValor();
-                cout<<" Ingrese valor de la corriente de mecanismo de medicion: "<<endl;
-                dato3 = IngresoValor();
-                cout<<" Ing rese valor de tension total: "<<endl;
-                dato1 = IngresoValor();
-                amperimetro = new MagnitudElectrica(dato1,dato2,dato3);
-                amperimetro ->funciondR();
-                cout<<"\n El resistor total es: "<<amperimetro->getDato4()<<endl;
-                delete amperimetro;
+                cantidad = 3;
+                texto3[0]= " tension total: ";
+                texto3[1]= " la corriente total: ";
+                texto3[2]= " la corriente de mecanismo de medicion: ";
+                magnitud = datos(cantidad,texto3);
+                magnitud ->funciondR();
+                cout<<"\n El resistor total es: "<<magnitud->getDato4()<<endl;
+                delete magnitud;
             
-                case 2:            
-                cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                cout<<" Ingrese valor de la resistencia interna del mecanismo de medicion: "<<endl;
-                dato1 = IngresoValor();
-                cout<<" Ingrese valor del factor de ampliacion del rango de medicion "<<endl;
-                dato2 = IngresoValor();
-                dato3 = 1;
-                amperimetro = new MagnitudElectrica(dato1,dato2,dato3);
-                amperimetro->funciondR();
-                cout<<"\n El resistor total es: "<<amperimetro->getDato4()<<endl;
-                delete amperimetro;
+                case 2:        
+                cantidad = 3;    
+                texto3[0]= " la resistencia interna del mecanismo de medicion: ";
+                texto3[1]= " factor de ampliacion del rango de medicion: ";
+                texto3[2]= " 1 ";
+                magnitud = datos(cantidad,texto3);
+                magnitud->funciondR();
+                cout<<"\n El resistor total es: "<<magnitud->getDato4()<<endl;
+                delete magnitud;
 
                 case 3:
-                cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                cout<<" Ingrese valor de la corriente total: "<<endl;
-                dato1 = IngresoValor();
-                cout<<" Ingrese valor de la corriente de mecanismo de medicion: "<<endl;
-                dato2 = IngresoValor();
-                amperimetro = new MagnitudElectrica(dato1,dato2);
-                amperimetro->funcionD();
-                cout<<" El factor de ampliacion del amperimetro es "<<amperimetro->getDato4()<<endl;
-                delete amperimetro;
+                cantidad = 2;
+                texto3[0]= " la corriente total: ";
+                texto3[1]= " la corriente de mecanismo de medicion: ";
+                magnitud = datos(cantidad,texto3);
+                magnitud->funcionD();
+                cout<<" El factor de ampliacion del amperimetro es "<<magnitud->getDato4()<<endl;
+                delete magnitud;
             
             }
             break;
 
             case 3:
-            int indice12;
             texto = " Calcular la determinacion indirecta de la resistencia : \n"
                     "1--> Conexion con error en la tension  \n"
                     "2--> Conexion con error en la intensidad \n";
-            indice12 = IngresoDigito(1,2,texto);
-            if (indice12 == 1){
-                cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                cout<<" Ingrese valor de la tension "<<endl;
-                dato1 = IngresoValor();
-                cout<<" Ingrese valor de la corriente "<<endl;
-                dato2 = IngresoValor();
-                cout<<" Ingrese valor de la resistencia interna del amperimetro "<<endl;
-                determinacion = new MagnitudElectrica(dato1,dato2,dato3);
-                determinacion->funcionddr();
-                cout<<" El valor de la resistencia corregida es: "<<determinacion->getDato4()<<endl;
-                delete determinacion;
+            indice2 = IngresoDigito(1,2,texto);
+            if (indice2 == 1){
+                cantidad = 3;
+                texto3[0]= " la tension ";
+                texto3[1]= " la corriente ";
+                texto3[2]= " la resistencia interna del amperimetro ";
+                magnitud = datos(cantidad,texto3);
+                magnitud->funcionddr();
+                cout<<" El valor de la resistencia corregida es: "<<magnitud->getDato4()<<endl;
+                delete magnitud;
             }
             if (indice == 2){
-                cout<<" ########E3.coreSoftwarev1############### "<<endl;
-                cout<<" Ingrese valor de la tension "<<endl;
-                dato3 = IngresoValor();
-                cout<<" Ingrese valor de la corriente "<<endl;
-                dato2 = IngresoValor();
-                cout<<" Ingrese el valor de la resistencia interna del voltimetro "<<endl;
-                dato5 = IngresoValor();
-                dato1 = 1;
-                dato4 = 1;
-                determinacion = new MagnitudElectrica(dato1,dato2,dato3,dato4,dato5);
-                determinacion->funcionE1();
-                cout<<" el valor de la resistencia corregida es: "<<determinacion->getDato4()<<endl;
-                delete determinacion;
+                cantidad = 5;
+                texto3[0] = " 1 ";
+                texto3[1] = " la corriente ";
+                texto3[2] = " la tension ";
+                texto3[3] = " 1 ";
+                texto3[4] = " la resistencia interna del voltimetro ";
+                magnitud = datos(cantidad,texto3);
+                magnitud->funcionE1();
+                cout<<" el valor de la resistencia corregida es: "<<magnitud->getDato4()<<endl;
+                delete magnitud;
             }
             break;
 
             case 4:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular resistencias en puente "<<endl; 
-            cout<<" Ingrese Resistencia 1 "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese Resistencia 2 "<<endl;
-            dato2 = IngresoValor();
-            cout<<" Ingrese Resistencia 3 "<<endl;
-            dato3 = IngresoValor();
-            puente = new MagnitudElectrica(dato1,dato2,dato3);
-            puente->funcionMd();
-            cout<<" El valor de la cuarta resistencia es: "<<puente->getDato4()<<" ohmios"<<endl;
-            delete puente;
+            cantidad = 3; 
+            texto3[0]= " la Resistencia 1 ";
+            texto3[1]= " la Resistencia 2 ";
+            texto3[2]= " la Resistencia 3 ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionMd();
+            cout<<" El valor de la cuarta resistencia es: "<<magnitud->getDato4()<<" ohmios"<<endl;
+            delete magnitud;
             break;
 
             case 5:
             break;
         }
-        cin.ignore();
-        cout<<"Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; getline(cin,consulta);
-        if (consulta == "s" || consulta == "S"){
-            system("clear");
-            continue;
-        }else{
-            cout<<endl;
-            system("clear");
+        texto2 = "Desea continuar dentro de las Resistencias de un Conductor S/n -->  ";
+        if (mensajeFinal(texto2)){
             break;
-        }    
+        }
+       
     }        
 
 }
