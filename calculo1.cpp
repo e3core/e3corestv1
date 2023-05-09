@@ -331,6 +331,7 @@ void ampliacionRangoMedicion(){
                         magnitud->funcionMr();
                         cout<<"\n El resistor total es : "<<magnitud->getDato4()<<endl;
                         delete magnitud;
+                        break;
 
                         case 3:
                         cantidad = 2;
@@ -339,13 +340,10 @@ void ampliacionRangoMedicion(){
                         magnitud = datos(cantidad,texto3);
                         magnitud->funcionD();
                         cout<<" El factor de ampliacion del voltimetro es: "<<magnitud->getDato4()<<endl;
-                        delete magnitud;       
-                    
+                        delete magnitud;
+                        break;                           
                     }
 
-                    
-
-            
             break;
 
             case 2:
@@ -365,6 +363,7 @@ void ampliacionRangoMedicion(){
                 magnitud ->funciondR();
                 cout<<"\n El resistor total es: "<<magnitud->getDato4()<<endl;
                 delete magnitud;
+                break;
             
                 case 2:        
                 cantidad = 3;    
@@ -375,6 +374,7 @@ void ampliacionRangoMedicion(){
                 magnitud->funciondR();
                 cout<<"\n El resistor total es: "<<magnitud->getDato4()<<endl;
                 delete magnitud;
+                break;
 
                 case 3:
                 cantidad = 2;
@@ -393,7 +393,8 @@ void ampliacionRangoMedicion(){
                     "1--> Conexion con error en la tension  \n"
                     "2--> Conexion con error en la intensidad \n";
             indice2 = IngresoDigito(1,2,texto);
-            if (indice2 == 1){
+            switch(indice2){
+                case 1:
                 cantidad = 3;
                 texto3[0]= " la tension ";
                 texto3[1]= " la corriente ";
@@ -402,8 +403,9 @@ void ampliacionRangoMedicion(){
                 magnitud->funcionddr();
                 cout<<" El valor de la resistencia corregida es: "<<magnitud->getDato4()<<endl;
                 delete magnitud;
-            }
-            if (indice == 2){
+                break;
+
+                case 2:
                 cantidad = 5;
                 texto3[0] = " 1 ";
                 texto3[1] = " la corriente ";
@@ -414,7 +416,9 @@ void ampliacionRangoMedicion(){
                 magnitud->funcionE1();
                 cout<<" el valor de la resistencia corregida es: "<<magnitud->getDato4()<<endl;
                 delete magnitud;
+                break;
             }
+               
             break;
 
             case 4:
@@ -439,14 +443,13 @@ void ampliacionRangoMedicion(){
     }        
 
 }
-
+/*calculos para division de tension segun la tension parcial sin carga,
+tension de marcha en vacio, resistencia interna de la fuente de tension*/
 void divisorTension(){
-    float dato1,dato2,dato3,dato4;
-    string texto,consulta;
-    int indice;
-    MagnitudElectrica* sincarga;
-    MagnitudElectrica* concarga;
-    MagnitudElectrica* fuente;
+    string texto,texto2;
+    string texto3[100];
+    int indice,cantidad;
+    Magnitud* magnitud = nullptr;
 
     while(true){
         texto = " ########E3.coreSoftwarev1###############\n"
@@ -458,72 +461,56 @@ void divisorTension(){
         indice = IngresoDigito(1,4,texto);
         switch(indice){
             case 1:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular la tension parcial sin carga "<<endl;
-            cout<<" Ingrese resistencia parcial 1 "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese resistencia parcial 2 "<<endl;
-            dato2 = IngresoValor();
-            cout<<" Ingrese el valor de la tension total "<<endl;
-            dato3 = IngresoValor();
-            sincarga = new MagnitudElectrica(dato1,dato2,dato3);
-            sincarga->funcionE2();
-            cout<<" La tension parcial sin carga es: "<<sincarga->getDato4()<<" V"<<endl;
-            delete sincarga;
+            cantidad = 3;
+            texto3[0]= " la resistencia parcial 1 ";
+            texto3[1]= " la resistencia parcial 2 ";
+            texto3[2]= " valor de la tension total ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionE2();
+            cout<<" La tension parcial sin carga es: "<<magnitud->getDato4()<<" V"<<endl;
+            delete magnitud;
             break;
 
             case 2:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular la tension de marcha en vacio "<<endl;
-            cout<<" Ingrese resistencia parcial 1 "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese resistencia parcial 2 "<<endl;
-            dato2 = IngresoValor();
-            cout<<" Ingrese el valor de la tension total "<<endl;
-            dato3 = IngresoValor();
-            concarga = new MagnitudElectrica(dato1,dato2,dato3);
-            concarga->funcionE2();
-            cout<<" La tension de marcha en vacio: "<<concarga->getDato4()<<" V"<<endl;
-            delete concarga;
+            cantidad = 3;
+            texto3[0]= " la resistencia parcial 1 ";
+            texto3[1]= " la resistencia parcial 2 ";
+            texto3[2]= " valor de la tension total ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionE2();
+            cout<<" La tension de marcha en vacio: "<<magnitud->getDato4()<<" V"<<endl;
+            delete magnitud;
             break;
 
             case 3:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular la resistencia interna de la fuente de tension equivalente "<<endl;
-            cout<<" Ingrese resistencia parcial 1 "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese resistencia parcial 2 "<<endl;
-            dato2 = IngresoValor();
-            fuente = new MagnitudElectrica(dato1,dato2);
-            fuente->funcionMdS();
-            cout<<" La resietencia interna es: "<<fuente->getDato4()<<" ohm"<<endl;
-            delete fuente;
+            cantidad = 2;
+            texto3[0] = " la resistencia parcial 1 ";
+            texto3[1]= " la resistencia parcial 2 ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionMdS();
+            cout<<" La resietencia interna es: "<<magnitud->getDato4()<<" ohm"<<endl;
+            delete magnitud;
             break;
         
         }
-        cin.ignore();
-        cout<<"Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; getline(cin,consulta);
-        if (consulta == "s" || consulta == "S"){
-            system("clear");
-            continue;
-        }else{
-            cout<<endl;
-            system("clear");
+        
+        texto2 = "Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; 
+        if (mensajeFinal(texto2)){
             break;
-        }    
+        }
       
 
     }
 
 
 }
+
+/*Aqui se calcula la variacion de temperatura en las resistencias*/
 void resistenciaTemperatura(){
-    float dato1,dato2,dato3,dato4;
-    string texto,consulta;
-    int indice;
-    MagnitudElectrica* variacion_resistencia;
-    MagnitudElectrica* resistencia_caliente;
-    MagnitudElectrica* variacion_temperatura;
+    string texto,texto2;
+    string texto3[100];
+    int indice,cantidad;
+    Magnitud* magnitud = nullptr;
 
     while(true){
         texto = " ########E3.coreSoftwarev1###############\n"
@@ -535,63 +522,48 @@ void resistenciaTemperatura(){
         indice = IngresoDigito(1,4,texto);
         switch(indice){
             case 1:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular la variacion de la resistencia "<<endl;
-            cout<<" Ingrese coeficiente de temperatura "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese la variacion de la temperatura "<<endl;
-            dato2 = IngresoValor();
-            cout<<" Ingrese valor de la resistencia en frio "<<endl;
-            dato3 = IngresoValor();
-            variacion_resistencia = new MagnitudElectrica(dato1,dato2,dato3);
-            variacion_resistencia->funcionmmm();
-            cout<<" El valor de la variacion de la resistencia es: "<<variacion_resistencia->getDato4()<<endl;
-            delete variacion_resistencia;
+            cantidad = 3;
+            texto3[0] = " la coeficiente de temperatura ";
+            texto3[1] = " la variacion de la temperatura ";
+            texto3[2] = " valor de la resistencia en frio ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionmmm();
+            cout<<" El valor de la variacion de la resistencia es: "<<magnitud->getDato4()<<endl;
+            delete magnitud;
             break;
 
             case 2:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular la resistencia en caliente "<<endl;
-            cout<<" Ingrese valor de la resistencia en frio "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese la variacion de la resistencia "<<endl;
-            dato2 = IngresoValor();
-            resistencia_caliente = new MagnitudElectrica(dato1,dato2);
-            resistencia_caliente->funcionS();
-            cout<<" El valor de la resistencia en caliente es: "<<resistencia_caliente->getDato4();
-            delete resistencia_caliente;
+            cantidad = 2;
+            texto3[0] = " la resistencia en frio ";
+            texto3[1] = " la variacion de la resistencia ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionS();
+            cout<<" El valor de la resistencia en caliente es: "<<magnitud->getDato4();
+            delete magnitud;
             break;
 
             case 3:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Calcular la variacion de la temperatura "<<endl;
-            cout<<" Ingrese el valor de la resistencia en caliente "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese el valor de la resitencia en frio "<<endl;
-            dato2 = IngresoValor();
-            cout<<" Ingrese el coeficiente de temperatura "<<endl;
-            dato3 = IngresoValor();
-            variacion_temperatura = new MagnitudElectrica(dato1,dato2,dato3,dato2);
-            variacion_temperatura->funcionDrm();
-            cout<<"el valor de la variacion de temperatura es "<<variacion_temperatura->getDato4()<<endl;
-            delete variacion_temperatura;
+            texto3[0]= " valor de la resistencia en caliente ";
+            texto3[1]= " valor de la resitencia en frio ";
+            texto3[2]= " coeficiente de temperatura ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionDrm();
+            cout<<"el valor de la variacion de temperatura es "<<magnitud->getDato4()<<endl;
+            delete magnitud;
             break;
 
         }
-        cin.ignore();
-        cout<<"Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; getline(cin,consulta);
-        if (consulta == "s" || consulta == "S"){
-            system("clear");
-            continue;
-        }else{
-            cout<<endl;
-            system("clear");
+        
+        texto2 ="Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; 
+        if (mensajeFinal(texto2)){
             break;
-        }    
+        }
+            
+          
     }
 }
  void potenciaElectrica(){
-    float dato1,dato2,dato3;
+    float dato1,dato2;
     string texto,consulta;
     int indice;
     MagnitudElectrica* tension_corriente;
@@ -718,7 +690,6 @@ void trabajoElectrico(){
 }
 
 void conversionEnergia(){
-    float dato1,dato2;
     int indice,cantidad,indice2;
     string texto,texto2;
     string texto3[100];
