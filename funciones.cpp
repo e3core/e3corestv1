@@ -42,13 +42,27 @@ SerieParalelo* datosSP(string texto[]){
     SerieParalelo* SP;
     int dato1 = 0;
     cout<<" ########E3.coreSoftwarev1###############"<<endl;
-    cout<<texto[0];
-    cout<<texto[1];
+    cout<<texto[0]<<endl;
+    cout<<texto[1]<<endl;
     dato1 = IngresoValor();
-    cout<<texto[2];
+    cout<<texto[2]<<endl;
     SP = new SerieParalelo(dato1);
     return SP;
-
+   
 }
+
+SerieParalelo* datosSP2(string texto[]){
+    SerieParalelo* SP;
+    int dato1 = 0;
+    cout<<" ########E3.coreSoftwarev1###############"<<endl;
+    cout<<texto[0]<<endl;
+    cout<<texto[1]<<endl;
+    dato1 = IngresoValor();
+    cout<<texto[2]<<endl;
+    SP = new SerieParalelo(dato1);
+    return SP;
+   
+}
+
 
 #endif

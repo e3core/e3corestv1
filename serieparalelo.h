@@ -49,9 +49,42 @@ class SerieParalelo{
         }
         totalR = total;
     }
+    void productoTotal(string dato){
+        float valor;
+        float valor2 = totalR;
+        cout<<"Ingrese valor de "<<dato<<endl;
+        valor = IngresoValor();
+        totalR = valor * valor2;
+        
+    }
+
+    void productoIndividual1(string dato,string dato2){
+        float valor = 0;
+        float arreglo[cantidad];
+        cout<<"Ingrese valor de "<<dato2<<endl;
+        valor = IngresoValor();
+        for (int i=0;i<cantidad;i++){
+             arreglo[i] = valor * cantidades[i];
+        }
+
+        for (int i=0;i<cantidad;i++){
+            cout<<"Valor "<<i+1<<" = "<<arreglo[i]<<dato<<endl;
+        }
+    }
+
+    void derivadoTotal(string dato){
+        float valor = 0;
+        float valor2 = totalR;
+        cout<<"Ingrese valor de "<<dato<<endl;
+        valor = IngresoValor();
+        totalR = valor/valor2;
+    }
+
 
     float getTotal(){
         return totalR;
     }
+
+   
 };
 #endif
