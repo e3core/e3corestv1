@@ -207,19 +207,19 @@ void ResistenciaConductor(){
 
     }
 }
-
+/* En esta funcion se calculara circuitos de resistencias en serie y paralelo en conjunto con sus tensiones y consumos*/
 void resistenciasSerieParalelo(){
-    int indice;
+    int indice,indice2;
     string texto,texto2,pregunta;
     string texto3[100];
     SerieParalelo* magnitud = nullptr;
-
+    while(true){
     texto = " ########E3.coreSoftwarev1###############\n"
             " Calcular: \n"
             "1--> Magnitudes en resistencias en serie \n"
             "2--> Magnitudes en resistencias en paralelo\n "
             "3--> Salir \n";
-    while(true){
+   
         indice = IngresoDigito(1,3,texto);
         system("clear");
 
@@ -242,46 +242,41 @@ void resistenciasSerieParalelo(){
                         "2--> Tension de cada una de las resistencias \n"
                         "3--> Corriente total del circuito \n"
                         "4--> salir \n";
-                        indice = IngresoDigito(1,4,texto);
-                        system("clear");
-                        switch(indice){
-                            case 1:
-                            cout<<"Calcular la tension total del circuito"<<endl;
-                            magnitud->productoTotal("la corriente total");
-                            cout<<" la tension total del circuito es de : "<<magnitud->getTotal()<<" V"<<endl;
-                            break;
-                            case 2:
-                            cout<<" Calcular la tension de cada una de las resistencias del circuito "<<endl;
-                            magnitud->productoIndividual1("V"," la corriente total");
-                            break;
-                            case 3:
-                            cout<<" Calcular la corriente total del circuito "<<endl;                           
-                            magnitud->derivadoTotal("la tesion total");
-                            cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl;
-                            break;  
-                            case 4:
-                            break;
+                        while(true){
+                            indice2 = IngresoDigito(1,4,texto);
+                            system("clear");
+                            switch(indice2){
+                                case 1:
+                                cout<<"Calcular la tension total del circuito"<<endl;
+                                magnitud->productoTotal("la corriente total");
+                                cout<<" la tension total del circuito es de : "<<magnitud->getTotal()<<" V"<<endl;
+                                break;
+                                case 2:
+                                cout<<" Calcular la tension de cada una de las resistencias del circuito "<<endl;
+                                magnitud->productoIndividual1("V"," la corriente total");
+                                break;
+                                case 3:
+                                cout<<" Calcular la corriente total del circuito "<<endl;                           
+                                magnitud->derivadoTotal("la tesion total");
+                                cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl;
+                                break;  
+                                case 4:
+                                break;
+                            }
+                            mensaje();
+                            texto2 = "Desea continuar dentro de este menu S/n -->  ";
+    
+                            if (mensajeFinal(texto2)){
+                                break;
+        
+                            }
+                            mensaje();
                         }
+                        
             }
             delete magnitud;
-            mensaje();
             cin.ignore();
-            
-            /*if(pregunta == "s" || pregunta == "S"){
-                system("clear");
-                texto3[2]= " Indique el valor de tension de cada una de las resistencias";
-                magnitud = datosSP(texto3);
-                magnitud->Serie();
-                cout<<endl;
-                cout<<" El total de las tensiones es:  "<<magnitud->getTotal()<<endl;
-                cout<<" La corriente total de un circuito en serie sera la misma en todo el circuito IT = I1=I2=I3=I... "<<endl<<endl;
-                delete magnitud;
-                mensaje();
-            }else {
-                mensaje();
-                break;
-            }*/
-        break;
+            break;
 
             case 2:
             texto3[0]= " Resistencias en Paralelo: ";
@@ -290,28 +285,55 @@ void resistenciasSerieParalelo(){
             magnitud = datosSP(texto3);
             magnitud->Paralelo();
             cout<<" el total de las resistencias es:  "<<magnitud->getTotal()<<" ohm"<<endl;
-            delete magnitud;
-            mensaje();
-            cout<<endl;
-            cin.ignore();
             cout<<" Desea Calcular la tension y la corriente del circuito serie  S/n -->  ";  getline(cin,pregunta);
             if (pregunta == "s" || pregunta == "S"){
-                texto3[2] = " Indique la corriente que pasa por cada una de las resistencias ";
-                magnitud = datosSP(texto3);
-                magnitud->Paralelo();
-                cout<<endl;
-                cout<<" el total de las corrientes es: "<<magnitud->getTotal()<<endl;
-                cout<<" la tension total de un circuito paralelo sera la misma para cada una de las resistencia UT = U1=U2=U3=U... "<<endl<<endl;
-                delete magnitud;
-                mensaje();
-            }else{
-                mensaje();
-                break;
+                system("clear");
+                texto = " ########E3.coreSoftwarev1###############\n"
+                        " Calcular: \n"
+                        "1--> Tension del circuito paralelo \n"
+                        "2--> Corriente de cada una de las resistencias \n"
+                        "3--> Corriente total del circuito \n"
+                        "4--> salir \n";
+                        while(true){
+                            indice2 = IngresoDigito(1,4,texto);
+                            system("clear");
+                            switch(indice2){
+                                case 1:
+                                cout<<" Calcular la tension del circuito "<<endl;                           
+                                magnitud->productoTotal("la corriente total");
+                                cout<<" la tension del circuito es de : "<<magnitud->getTotal()<<" V"<<endl;
+                                break;  
+                                case 2:
+                                cout<<" Calcular la tension de cada una de las resistencias del circuito "<<endl;
+                                magnitud->derivadoIndividual("A"," la tension total");
+                                break;
+                                case 3:
+                                cout<<" Calcular la corriente total del circuito "<<endl;                           
+                                magnitud->derivadoTotal("la tesion total");
+                                cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl;
+                                break;
+                                
+                                case 4:
+                                break;
+                            }
+                            mensaje();
+                            texto2 = "Desea continuar dentro de este menu S/n -->  ";
+    
+                            if (mensajeFinal(texto2)){
+                                break;
+        
+                            }
+                            mensaje();
+                        }
+                        
             }
-        break;
-
-        case 3:
-        break;
+            delete magnitud;
+            mensaje();
+            cin.ignore();
+            break;
+   
+            case 3:
+            break;
         }
         
         texto2 = "Desea continuar dentro de la Resistecnias Serie Paralelo S/n -->  ";
@@ -320,8 +342,10 @@ void resistenciasSerieParalelo(){
             break;
         
         }
+        
 
     }
+    mensaje();
 }
 // ---------------------------------------------------- APARTIR DE AQUI HAY QUE CORREGIR
 /* Aqui se calcula los diferentes rangos de un voltimetro y de un amperimetro */

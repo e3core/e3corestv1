@@ -79,7 +79,21 @@ class SerieParalelo{
         valor = IngresoValor();
         totalR = valor/valor2;
     }
+    
+    void derivadoIndividual(string dato,string dato2){
+        float valor = 0;
+        float arreglo[cantidad];
+        cout<<"Ingrese valor de "<<dato2<<endl;
+        valor = IngresoValor();
+        for(int i=0;i<cantidad;i++){
+            arreglo[i] = valor/cantidades[i];
+        }
 
+        for (int i=0;i<cantidad;i++){
+            cout<<"Valor "<<i+1<<" = "<<arreglo[i]<<dato<<endl;
+
+        }
+    } 
 
     float getTotal(){
         return totalR;
