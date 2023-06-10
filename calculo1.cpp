@@ -32,17 +32,18 @@ void leyDeOhm(){
     Magnitud* magnitud = nullptr;
     
     while(true){
-        texto = " ########E3.coreSoftwarev1###############\n"
-                " Calcular: \n"
-                "1--> tension\n"
-                "2--> resistencia\n"
-                "3--> corriente \n"
-                "4--> conductancia\n "
-                "5--> salir \n";
+        texto = "########E3.coreSoftwarev1###############\n"
+                "Ley de ohm\n"
+                "Calcular: \n"
+                "  1--> tension\n"
+                "  2--> resistencia\n"
+                "  3--> corriente \n"
+                "  4--> conductancia\n"
+                "  5--> salir \n";
     /* Aqui se llama a la funcion IngresoDigito donde ingresara 2 numeros enteros el cual son
     para indicarle al menu el rango de numeros permitidos ingresar en este caso es desde el 1 hasta el 5 
      y por ultimo la variable texto que tiene almacenado la lista del menu por numero de ingreso*/
-        indice = IngresoDigito(1,4,texto);
+        indice = IngresoDigito(1,5,texto);
         system("clear");  // borra la pantalla
         switch(indice){
             /* Aqui se crea el primer caso donde se ingresa el valor 2 a la variable cantidad ya que ese
@@ -51,14 +52,14 @@ void leyDeOhm(){
             case 1:
             cantidad = 2;
             texto3[0] = " Calcular tension :";
-            texto3[1] = "la resistencia: ";
-            texto3[2] = "la corriente: ";
+            texto3[1] = "la resistencia ";
+            texto3[2] = "la corriente ";
             /* aqui se iguala el objeto magnitud a la funcion de tipo objeto instanciado de la misma clase */
             magnitud = datos(cantidad,texto3);
             /* aqui se usa el metodo funcionM  en el objeto magnitud*/
             magnitud->funcionM();
             /* Se muestra el retorno de datos del metodo getDato4 */
-            cout<<"\n la tension es: "<<magnitud->getDato4()<<"voltios"<<endl<<endl;
+            cout<<"\n la tension es: "<<magnitud->getDato4()<<" voltios"<<endl<<endl;
             /* Se elimina el objeto */
             delete magnitud;
             /* se muestra un mensaje final antes de finaliza el caso*/
@@ -68,11 +69,11 @@ void leyDeOhm(){
             case 2:
             cantidad = 2;
             texto3[0] = " Calcular resistencia :";
-            texto3[1] = "la tension: ";
+            texto3[1] = "la tension ";
             texto3[2] = "la corriente ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
-            cout<<"\n la resistencia es: "<<magnitud->getDato4()<<"ohmios"<<endl<<endl;
+            cout<<"\n la resistencia es: "<<magnitud->getDato4()<<" ohmios"<<endl<<endl;
             delete magnitud;
             mensaje();
             break;
@@ -80,11 +81,11 @@ void leyDeOhm(){
             case 3:
             cantidad = 2;
             texto3[0] = " Calcular corriente :";
-            texto3[1] = "la tension: ";
+            texto3[1] = "la tension ";
             texto3[2] = "la resistencia ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
-            cout<<"\n la corriente es: "<<magnitud->getDato4()<<"amperios"<<endl<<endl;
+            cout<<"\n la corriente es: "<<magnitud->getDato4()<<" amperios"<<endl<<endl;
             delete magnitud;
             mensaje();
             break;
@@ -92,16 +93,17 @@ void leyDeOhm(){
             case 4:
             cantidad = 2;
             texto3[0] = " Calcular conductancia :";
-            texto3[0] = " 1 ";
-            texto3[1] = "la resistencia ";
+            texto3[1] = " 1 ";
+            texto3[2] = "la resistencia ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
-            cout<<"\n la conductancia es: "<<magnitud->getDato4()<<"siemens"<<endl<<endl;
+            cout<<"\n la conductancia es: "<<magnitud->getDato4()<<" siemens"<<endl<<endl;
             delete magnitud;
             mensaje();
             break;
 
             case 5:
+            mensaje();
             break;
 /* aqui se le carga un mensaje a la variable texto2 para luego comparar el retorno de la funcion 
 mensajeriaFinal el cual si es falso continuara el bucle pero si es verdadero interumpe el bucle while y 
@@ -124,12 +126,13 @@ void ResistenciaConductor(){
     Magnitud* magnitud = nullptr;
     
     while (true){
-        texto = " ########E3.coreSoftwarev1###############\n"
-                " Calcular: \n"
-                "1--> Resistencia del conductor\n"
-                "2--> Conductividad electrica \n"
-                "3--> Densidad de corriente \n"
-                "4--> Salir\n ";
+        texto = "########E3.coreSoftwarev1###############\n"
+                "Resistencia del conductor\n"
+                "Calcular: \n"
+                "  1--> Resistencia del conductor\n"
+                "  2--> Conductividad electrica \n"
+                "  3--> Densidad de corriente \n"
+                "  4--> Salir\n ";
         
         indice = IngresoDigito(1,4,texto);    
         system("clear");
@@ -138,9 +141,9 @@ void ResistenciaConductor(){
             case 1:
             texto =  " ########E3.coreSoftwarev1###############\n"
                     " Calcular resistencia de un conductor :\n"
-                    " 1--> Si se tiene la conductibilidad \n"
-                    " 2--> Si se tiene la resistencia especifica\n ";
-               
+                    "   1--> Si se tiene la conductibilidad \n"
+                    "   2--> Si se tiene la resistencia especifica\n ";
+                
             indice2 = IngresoDigito(1,2,texto);
             system("clear");
             
@@ -148,12 +151,12 @@ void ResistenciaConductor(){
                 case 1: 
                 cantidad = 3;
                 texto3[0] = " Calcular resistencia de un conductor : ";
-                texto3[1] = "la longitud: ";
-                texto3[2] = "la conductibilidad: ";
-                texto3[3] = "la seccion del conductor: ";
+                texto3[1] = "la longitud ";
+                texto3[2] = "la conductibilidad ";
+                texto3[3] = "la seccion del conductor ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funciondD();
-                cout<<"\n la resistencia  es: "<<magnitud->getDato4()<<" ohmios "<<endl;
+                cout<<"La resistencia  es: "<<magnitud->getDato4()<<" ohmios "<<endl<<endl;
                 delete magnitud;
                 mensaje();
                 break;
@@ -161,9 +164,9 @@ void ResistenciaConductor(){
                 case 2:
                 cantidad = 3;
                 texto3[0] = " Calcular resistencia de un conductor : ";
-                texto3[1] = "la resistencia especifica: ";
-                texto3[2] = "la longitud: ";
-                texto3[3] = "la seccion del conductor: ";
+                texto3[1] = "la resistencia especifica ";
+                texto3[2] = "la longitud ";
+                texto3[3] = "la seccion del conductor ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionDd();
                 cout<<"\n la resistencia  es: "<<magnitud->getDato4()<<" ohmios "<<endl;
@@ -178,7 +181,7 @@ void ResistenciaConductor(){
             cantidad = 2;
             texto3[0] = "Calcular la conductividad electrica ";
             texto3[1] = " 1 ";
-            texto3[2] = "la resistencia especifica: ";
+            texto3[2] = "la resistencia especifica ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
             cout<<"\n la conductividad es: "<<magnitud->getDato4()<<" "<<endl;
@@ -189,17 +192,19 @@ void ResistenciaConductor(){
             case 3:
             cantidad = 2;
             texto3[0] = " Calcular la densidad de corriente :";
-            texto3[1] = "la Corriente electrica: ";
-            texto3[2] = "la seccion del conductor: ";
+            texto3[1] = "la Corriente electrica ";
+            texto3[2] = "la seccion del conductor ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
             cout<<"\n la densidad electrica es: "<<magnitud->getDato4()<<endl;
             delete magnitud;
             mensaje();
             break;
+             case 4:
+             mensaje();
             
         }
-        
+
         texto2 = "Desea continuar dentro de las Resistencias de un Conductor S/n -->  ";
         if (mensajeFinal(texto2)){
             break;

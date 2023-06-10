@@ -35,7 +35,7 @@ string ingreso;
 while(true){
     cout<<"---> "; getline(cin,ingreso);
     try{
-        retorno = stoi(ingreso);
+        retorno = stof(ingreso);
         break;
     }
     catch( invalid_argument& e){
