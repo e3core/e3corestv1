@@ -21,14 +21,18 @@ void ingreso(){
         cout<<"6--> Divisor de tension "<<endl;
         cout<<"7--> Resistencia y Temperatura "<<endl;
         cout<<"8--> Potencia electrica"<<endl;
-        cout<<"9--> Conversion de energia,rendimiento "<<endl;
+        cout<<"9--> Trabajo electrico: "<<endl;
+        cout<<"10--> Conversion de energia,rendimiento "<<endl;
         cout<<"Ingrese un digito: "; getline(cin,input);
     // código que puede generar una excepción
         try {
         // convierte la entrada en un numero entero;
             indice = stoi(input);
-            if (indice < 1 || indice > 9) {
+            if (indice < 1 || indice > 10) {
                 throw invalid_argument(" Error de menu");
+                cout<< "!!!!!!!  INTENTE DE NUEVO CON UN DIGITO SEGUN EL MENU   !!!!!!!! "<<endl;
+                cout<<"*******************************************************************"<<endl<<endl;
+                
                 system("clear");
             }
 
@@ -38,7 +42,9 @@ void ingreso(){
     // código que maneja la excepción
         catch (invalid_argument& e) {
             system("clear");
-            cout << "Error: Digito erroneo: " << e.what() <<endl;
+            cout<< "      Error: Digito erroneo: " << e.what() <<endl;
+            cout<< "!!!!!!!  INTENTE DE NUEVO CON UN DIGITO SEGUN EL MENU   !!!!!!!! "<<endl;
+            cout<<"*******************************************************************"<<endl<<endl;
             ingreso();
         }
         cin.ignore();
@@ -111,6 +117,13 @@ void menu(int Indice){
         break;
         
         case 9:
+        system("clear");
+        trabajoElectrico();
+        system("clear");
+        ingreso();
+        break;
+
+        case 10:
         system("clear");
         conversionEnergia();
         system("clear");

@@ -1,6 +1,7 @@
 #ifndef MAGNITUD_H
 #define MAGNITUD_H
 #include<iostream>
+#include<math.h>
 using namespace std;
 class Magnitud{
  private:
@@ -63,13 +64,20 @@ class Magnitud{
             datos[100] = datos[0]*datos[1]*datos[2];
         }
         void funcionDrm(){
-            datos[100] = (datos[0]-datos[1])/(datos[2]*datos[3]);
+            datos[100] = (datos[0]-datos[1])/(datos[2]*datos[1]);
         }
         void funcionS(){
             datos[100] = datos[0]+datos[1];
         }
         void funcionR(){
             datos[100] = datos[0]-datos[1];
+        }
+
+        void funcionMP(){
+            datos[100] = (pow(datos[0],2)*datos[1]);
+        }
+        void funcionDP(){
+            datos[100]= (pow(datos[0],2)/datos[1]);
         }
          float getDato4(){
             return datos[100];

@@ -169,7 +169,7 @@ void ResistenciaConductor(){
                 texto3[3] = "la seccion del conductor ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionDd();
-                cout<<"\n la resistencia  es: "<<magnitud->getDato4()<<" ohmios "<<endl;
+                cout<<"\n la resistencia  es: "<<magnitud->getDato4()<<" ohmios "<<endl<<endl;
                 delete magnitud;
                 mensaje();
                 break;
@@ -184,7 +184,7 @@ void ResistenciaConductor(){
             texto3[2] = "la resistencia especifica ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
-            cout<<"\n la conductividad es: "<<magnitud->getDato4()<<" "<<endl;
+            cout<<"\n la conductividad es: "<<magnitud->getDato4()<<" "<<endl<<endl;
             delete magnitud;
             mensaje();
             break;
@@ -196,7 +196,7 @@ void ResistenciaConductor(){
             texto3[2] = "la seccion del conductor ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionD();
-            cout<<"\n la densidad electrica es: "<<magnitud->getDato4()<<endl;
+            cout<<"\n la densidad electrica es: "<<magnitud->getDato4()<<endl<<endl;
             delete magnitud;
             mensaje();
             break;
@@ -220,9 +220,10 @@ void resistenciasSerieParalelo(){
     SerieParalelo* magnitud = nullptr;
     while(true){
     texto = " ########E3.coreSoftwarev1###############\n"
+            " Resistencias en serie y paralelo\n"
             " Calcular: \n"
             "1--> Magnitudes en resistencias en serie \n"
-            "2--> Magnitudes en resistencias en paralelo\n "
+            "2--> Magnitudes en resistencias en paralelo\n"
             "3--> Salir \n";
    
         indice = IngresoDigito(1,3,texto);
@@ -246,15 +247,15 @@ void resistenciasSerieParalelo(){
                         "1--> Tension total del circuito serie \n"
                         "2--> Tension de cada una de las resistencias \n"
                         "3--> Corriente total del circuito \n"
-                        "4--> salir \n";
+                        "4--> Salir \n";
                         while(true){
                             indice2 = IngresoDigito(1,4,texto);
                             system("clear");
                             switch(indice2){
                                 case 1:
                                 cout<<"Calcular la tension total del circuito"<<endl;
-                                magnitud->productoTotal("la corriente total");
-                                cout<<" la tension total del circuito es de : "<<magnitud->getTotal()<<" V"<<endl;
+                                magnitud->productoTotal("la corriente total:");
+                                cout<<" la tension total del circuito es de : "<<magnitud->getTotal()<<" V"<<endl<<endl;
                                 break;
                                 case 2:
                                 cout<<" Calcular la tension de cada una de las resistencias del circuito "<<endl;
@@ -262,8 +263,8 @@ void resistenciasSerieParalelo(){
                                 break;
                                 case 3:
                                 cout<<" Calcular la corriente total del circuito "<<endl;                           
-                                magnitud->derivadoTotal("la tesion total");
-                                cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl;
+                                magnitud->derivadoTotal("la tension total");
+                                cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl<<endl;
                                 break;  
                                 case 4:
                                 break;
@@ -273,14 +274,17 @@ void resistenciasSerieParalelo(){
     
                             if (mensajeFinal(texto2)){
                                 break;
-        
                             }
-                            mensaje();
+                            
                         }
-                        
+                     mensaje();   
+            }else{
+                mensaje();
             }
+            
             delete magnitud;
             cin.ignore();
+            mensaje();
             break;
 
             case 2:
@@ -306,7 +310,7 @@ void resistenciasSerieParalelo(){
                                 case 1:
                                 cout<<" Calcular la tension del circuito "<<endl;                           
                                 magnitud->productoTotal("la corriente total");
-                                cout<<" la tension del circuito es de : "<<magnitud->getTotal()<<" V"<<endl;
+                                cout<<" la tension del circuito es de : "<<magnitud->getTotal()<<" V"<<endl<<endl;
                                 break;  
                                 case 2:
                                 cout<<" Calcular la tension de cada una de las resistencias del circuito "<<endl;
@@ -314,8 +318,8 @@ void resistenciasSerieParalelo(){
                                 break;
                                 case 3:
                                 cout<<" Calcular la corriente total del circuito "<<endl;                           
-                                magnitud->derivadoTotal("la tesion total");
-                                cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl;
+                                magnitud->derivadoTotal("la tension total");
+                                cout<<" la corriente total del circuito es de : "<<magnitud->getTotal()<<" A"<<endl<<endl;
                                 break;
                                 
                                 case 4:
@@ -328,20 +332,22 @@ void resistenciasSerieParalelo(){
                                 break;
         
                             }
-                            mensaje();
+                            
                         }
-                        
+                      mensaje();  
+            }else{
+                mensaje();
             }
             delete magnitud;
-            mensaje();
             cin.ignore();
+            mensaje();
             break;
    
             case 3:
             break;
         }
         
-        texto2 = "Desea continuar dentro de la Resistecnias Serie Paralelo S/n -->  ";
+        texto2 = "Desea continuar dentro de la Resistencias Serie Paralelo S/n -->  ";
     
         if (mensajeFinal(texto2)){
             break;
@@ -352,8 +358,7 @@ void resistenciasSerieParalelo(){
     }
     mensaje();
 }
-// ---------------------------------------------------- APARTIR DE AQUI HAY QUE CORREGIR
-/* Aqui se calcula los diferentes rangos de un voltimetro y de un amperimetro */
+
 void ampliacionRangoMedicion(){
     int indice,indice2,cantidad;
     string texto,texto2,pregunta;
@@ -361,98 +366,106 @@ void ampliacionRangoMedicion(){
     Magnitud* magnitud = nullptr;
 
     while(true){
-        texto = " ########E3.coreSoftwarev1###############\n"
-                " Calcular: \n"
-                "1--> Voltimetro \n"
-                "2--> Amperimetro \n"
-                "3--> Determinacion indirecta de la resistencia \n"
-                "4--> Conexion de resistencia en puente \n"
-                "5--> salir \n";
+        texto = "########E3.coreSoftwarev1###############\n"
+                "Ampliacion de rango y medicion\n"
+                "Calcular: \n"
+                "  1--> Voltimetro \n"
+                "  2--> Amperimetro \n"
+                "  3--> Determinacion indirecta de la resistencia \n"
+                "  4--> Conexion de resistencia en puente \n"
+                "  5--> salir \n";
 
         indice = IngresoDigito(1,5,texto);
         switch(indice){
             case 1:
             
-            texto = " Calcular valores del voltimetro : \n"
-                    "1--> Resistor en serie teniendo la tension total y a tension de mecanismo de medicion \n"
-                    "2--> Resistor en serie teniendo la resistencia interna del mecanismo de medicion \n"
-                    "3--> Factor de ampliacion del rango de medicion ";
+            texto = "Calcular valores del voltimetro : \n"
+                    "  1--> Resistor en serie teniendo la tension total y a tension de mecanismo de medicion \n"
+                    "  2--> Resistor en serie teniendo la resistencia interna del mecanismo de medicion \n"
+                    "  3--> Factor de ampliacion del rango de medicion ";
                         
                     indice2 = IngresoDigito(1,3,texto);
                     system("clear");
                     switch (indice2){
                         case 1:
                         cantidad = 3;
-                        texto3[0]= " la tension total :";
-                        texto3[1]= " la tension del mecanismo de medicion: ";                       
-                        texto3[2]= " la corriente del mecanismo de medicion ";
+                        texto3[0]= " Calcular el resistor en serie teniendo la tension total y a tension de mecanismo de medicion: ";
+                        texto3[1]= "la tension total";
+                        texto3[2]= "la tension del mecanismo de medicion";                       
+                        texto3[3]= "la corriente del mecanismo de medicion";
                         magnitud = datos(cantidad,texto3);
                         magnitud->funcionDr();
-                        cout<<"\n  El resistor total es : "<<magnitud->getDato4()<<endl;
+                        cout<<"El resistor total en serie es :"<<magnitud->getDato4()<<endl<<endl;
                         delete magnitud;
                         break;
 
                         case 2:
                         cantidad = 3;
-                        texto3[0]= " factor de ampliacion del rango de medicion ";
-                        texto3[1]= "1 ";
-                        texto3[2]= " la resistencia interna del mecanismo de medicion ";
+                        texto3[0]= "Calcular el resistor en serie teniendo la resistencia interna del mecanismo de medicion";
+                        texto3[1]= "factor de ampliacion del rango de medicion ";
+                        texto3[2]= "1 ";
+                        texto3[3]= "la resistencia interna del mecanismo de medicion ";
                         magnitud = datos(cantidad,texto3);
                         magnitud->funcionMr();
-                        cout<<"\n El resistor total es : "<<magnitud->getDato4()<<endl;
+                        cout<<"El resistor total en serie es :"<<magnitud->getDato4()<<endl<<endl;
                         delete magnitud;
                         break;
 
                         case 3:
                         cantidad = 2;
-                        texto3[0]= " la tension total :";
-                        texto3[1]= " la tension del mecanismo de medicion: ";
+                        texto3[0]= " Calcular Factor de ampliacion del rango de medicion";
+                        texto3[1]= "la tension total ";
+                        texto3[2]= "la tension del mecanismo de medicion ";
                         magnitud = datos(cantidad,texto3);
                         magnitud->funcionD();
-                        cout<<" El factor de ampliacion del voltimetro es: "<<magnitud->getDato4()<<endl;
+                        cout<<" El factor de ampliacion del voltimetro es:"<<magnitud->getDato4()<<endl<<endl;
                         delete magnitud;
                         break;                           
                     }
-
+                    
             break;
 
             case 2:
             texto =  " Calcular valores del amperimetro : \n"
                     "1--> Resistor en paralelo teniendo la corriente total y la corriente de mecanismo de medicion \n"
-                    "2--> Resistor en serie teniendo la resistencia interna del mecanismo de medicion \n"
+                    "2--> Resistor en paralelo teniendo la resistencia interna del mecanismo de medicion \n"
                     "3--> Factor de ampliacion del rango de medicion ";
             indice2 = IngresoDigito(1,3,texto);
+            system("clear");
 
             switch(indice2){
                 case 1:
                 cantidad = 3;
-                texto3[0]= " tension total: ";
-                texto3[1]= " la corriente total: ";
-                texto3[2]= " la corriente de mecanismo de medicion: ";
+                texto3[0]= "Calcular resistor en paralelo teniendo la corriente total y la corriente de mecanismo de medicion";
+                texto3[1]= "tension total ";
+                texto3[2]= "la corriente total ";
+                texto3[3]= "la corriente de mecanismo de medicion ";
                 magnitud = datos(cantidad,texto3);
                 magnitud ->funciondR();
-                cout<<"\n El resistor total es: "<<magnitud->getDato4()<<endl;
+                cout<<"El resistor total en paralelo es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
                 break;
             
                 case 2:        
                 cantidad = 3;    
-                texto3[0]= " la resistencia interna del mecanismo de medicion: ";
-                texto3[1]= " factor de ampliacion del rango de medicion: ";
-                texto3[2]= " 1 ";
+                texto3[0]= "Calcular resistor en paralelo teniendo la resistencia interna del mecanismo de medicion";
+                texto3[1]= "la resistencia interna del mecanismo de medicion ";
+                texto3[2]= "factor de ampliacion del rango de medicion ";
+                texto3[3]= "1 ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funciondR();
-                cout<<"\n El resistor total es: "<<magnitud->getDato4()<<endl;
+                cout<<"El resistor total en paralelo es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
                 break;
 
                 case 3:
                 cantidad = 2;
-                texto3[0]= " la corriente total: ";
-                texto3[1]= " la corriente de mecanismo de medicion: ";
+                texto3[0] = "Calcular el factor de ampliacion del rango de medicion";
+                texto3[1]= "la corriente total ";
+                texto3[2]= "la corriente de mecanismo de medicion ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionD();
-                cout<<" El factor de ampliacion del amperimetro es "<<magnitud->getDato4()<<endl;
+                cout<<" El factor de ampliacion del amperimetro es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
             
             }
@@ -463,28 +476,31 @@ void ampliacionRangoMedicion(){
                     "1--> Conexion con error en la tension  \n"
                     "2--> Conexion con error en la intensidad \n";
             indice2 = IngresoDigito(1,2,texto);
+            system("clear");
             switch(indice2){
                 case 1:
                 cantidad = 3;
-                texto3[0]= " la tension ";
-                texto3[1]= " la corriente ";
-                texto3[2]= " la resistencia interna del amperimetro ";
+                texto3[0]= " Calcular la conexion con error en la tension";
+                texto3[1]= "la tension ";
+                texto3[2]= "la corriente ";
+                texto3[3]= "la resistencia interna del amperimetro ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionddr();
-                cout<<" El valor de la resistencia corregida es: "<<magnitud->getDato4()<<endl;
+                cout<<" El valor de la resistencia corregida es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
                 break;
 
                 case 2:
                 cantidad = 5;
-                texto3[0] = " 1 ";
-                texto3[1] = " la corriente ";
-                texto3[2] = " la tension ";
-                texto3[3] = " 1 ";
-                texto3[4] = " la resistencia interna del voltimetro ";
+                texto3[0] = "Calcular conexion con error en la intensidad";
+                texto3[1] = " 1 ";
+                texto3[2] = " la corriente ";
+                texto3[3] = " la tension ";
+                texto3[4] = " 1 ";
+                texto3[5] = " la resistencia interna del voltimetro ";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionE1();
-                cout<<" el valor de la resistencia corregida es: "<<magnitud->getDato4()<<endl;
+                cout<<" El valor de la resistencia corregida es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
                 break;
             }
@@ -492,20 +508,23 @@ void ampliacionRangoMedicion(){
             break;
 
             case 4:
+            system("clear");
             cantidad = 3; 
-            texto3[0]= " la Resistencia 1 ";
-            texto3[1]= " la Resistencia 2 ";
-            texto3[2]= " la Resistencia 3 ";
+            texto3[0]= "Calcular la conexion de resistencia en puente ";
+            texto3[1]= " la Resistencia 1 ";
+            texto3[2]= " la Resistencia 2 ";
+            texto3[3]= " la Resistencia 3 ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionMd();
-            cout<<" El valor de la cuarta resistencia es: "<<magnitud->getDato4()<<" ohmios"<<endl;
+            cout<<" El valor de la cuarta resistencia es:"<<magnitud->getDato4()<<" ohmios"<<endl<<endl;
             delete magnitud;
             break;
 
             case 5:
             break;
         }
-        texto2 = "Desea continuar dentro de las Resistencias de un Conductor S/n -->  ";
+        mensaje();
+        texto2 = "Desea continuar dentro de la Ampliacion del rango de medicion S/n -->  ";
         if (mensajeFinal(texto2)){
             break;
         }
@@ -515,6 +534,7 @@ void ampliacionRangoMedicion(){
 }
 /*calculos para division de tension segun la tension parcial sin carga,
 tension de marcha en vacio, resistencia interna de la fuente de tension*/
+
 void divisorTension(){
     string texto,texto2;
     string texto3[100];
@@ -529,42 +549,46 @@ void divisorTension(){
                 "3--> Resistencia interna de la fuente de tension equivalente \n"
                 "4--> Salir\n ";
         indice = IngresoDigito(1,4,texto);
+        system("clear");
         switch(indice){
             case 1:
             cantidad = 3;
-            texto3[0]= " la resistencia parcial 1 ";
-            texto3[1]= " la resistencia parcial 2 ";
-            texto3[2]= " valor de la tension total ";
+            texto3[0]= "Calcular la tension parcial sin carga";
+            texto3[1]= "la resistencia parcial 1 ";
+            texto3[2]= "la resistencia parcial 2 ";
+            texto3[3]= "la tension total ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionE2();
-            cout<<" La tension parcial sin carga es: "<<magnitud->getDato4()<<" V"<<endl;
+            cout<<" La tension parcial sin carga es:"<<magnitud->getDato4()<<" V"<<endl<<endl;
             delete magnitud;
             break;
 
             case 2:
             cantidad = 3;
-            texto3[0]= " la resistencia parcial 1 ";
-            texto3[1]= " la resistencia parcial 2 ";
-            texto3[2]= " valor de la tension total ";
+            texto3[0]= "Calcular la tension de marcha en vacio";
+            texto3[1]= "la resistencia parcial 1 ";
+            texto3[2]= "la resistencia parcial 2 ";
+            texto3[3]= "la tension total ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionE2();
-            cout<<" La tension de marcha en vacio: "<<magnitud->getDato4()<<" V"<<endl;
+            cout<<" La tension de marcha en vacio:"<<magnitud->getDato4()<<" V"<<endl<<endl;
             delete magnitud;
             break;
 
             case 3:
             cantidad = 2;
-            texto3[0] = " la resistencia parcial 1 ";
-            texto3[1]= " la resistencia parcial 2 ";
+            texto3[0]= "Calcular la  resistencia interna de la fuente de tension equivalente ";
+            texto3[1]= "la resistencia parcial 1 ";
+            texto3[2]= "la resistencia parcial 2 ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionMdS();
-            cout<<" La resietencia interna es: "<<magnitud->getDato4()<<" ohm"<<endl;
+            cout<<" La resistencia interna es:"<<magnitud->getDato4()<<" ohm"<<endl<<endl;
             delete magnitud;
             break;
         
         }
-        
-        texto2 = "Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; 
+        mensaje();
+        texto2 = "Desea continuar dentro del divisor de tension S/n -->  "; 
         if (mensajeFinal(texto2)){
             break;
         }
@@ -590,41 +614,49 @@ void resistenciaTemperatura(){
                 "3--> Variacion de la temperatura\n"
                 "4--> Salir\n ";
         indice = IngresoDigito(1,4,texto);
+        system("clear");
         switch(indice){
             case 1:
             cantidad = 3;
-            texto3[0] = " la coeficiente de temperatura ";
-            texto3[1] = " la variacion de la temperatura ";
-            texto3[2] = " valor de la resistencia en frio ";
+            texto3[0] = " Calcular la variacion de la resistencia";
+            texto3[1] = "coeficiente de temperatura ";
+            texto3[2] = "la variacion de la temperatura ";
+            texto3[3] = "la resistencia en frio ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionmmm();
-            cout<<" El valor de la variacion de la resistencia es: "<<magnitud->getDato4()<<endl;
+            cout<<" El valor de la variacion de la resistencia es:"<<magnitud->getDato4()<<endl<<endl;
             delete magnitud;
             break;
 
             case 2:
             cantidad = 2;
-            texto3[0] = " la resistencia en frio ";
-            texto3[1] = " la variacion de la resistencia ";
+            texto3[0] = " Calcular la resistencia en caliente";
+            texto3[1] = "la resistencia en frio ";
+            texto3[2] = "la variacion de la resistencia ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionS();
-            cout<<" El valor de la resistencia en caliente es: "<<magnitud->getDato4();
+            cout<<" El valor de la resistencia en caliente es:"<<magnitud->getDato4()<<endl<<endl;
             delete magnitud;
             break;
 
             case 3:
-            texto3[0]= " valor de la resistencia en caliente ";
-            texto3[1]= " valor de la resitencia en frio ";
-            texto3[2]= " coeficiente de temperatura ";
+            cantidad = 3;
+            texto3[0]= " Calcular la variacion de temperatura";
+            texto3[1]= "la resistencia en caliente ";
+            texto3[2]= "la resistencia en frio ";
+            texto3[3]= "coeficiente de temperatura ";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionDrm();
-            cout<<"el valor de la variacion de temperatura es "<<magnitud->getDato4()<<endl;
+            cout<<"el valor de la variacion de temperatura es "<<magnitud->getDato4()<<endl<<endl;
             delete magnitud;
             break;
 
+            case 4:
+            break;
+
         }
-        
-        texto2 ="Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; 
+        mensaje();
+        texto2 ="Desea continuar dentro de la Resistencia y Temperatura S/n -->  "; 
         if (mensajeFinal(texto2)){
             break;
         }
@@ -633,12 +665,10 @@ void resistenciaTemperatura(){
     }
 }
  void potenciaElectrica(){
-    float dato1,dato2;
-    string texto,consulta;
-    int indice;
-    MagnitudElectrica* tension_corriente;
-    MagnitudElectrica* corriente_resistencia;
-    MagnitudElectrica* tension_resistencia;
+    string texto,texto2;
+    string texto3[100];
+    int indice,cantidad;
+    Magnitud* magnitud = nullptr;
 
     while(true){
         texto = " ########E3.coreSoftwarev1###############\n"
@@ -648,68 +678,60 @@ void resistenciaTemperatura(){
                 "3--> Teniendo tension y resistencia\n"
                 "4--> Salir\n ";
         indice = IngresoDigito(1,4,texto);
+        system("clear");
         switch(indice){
             case 1:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Ingrese valor de la tension "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese valor de corriente "<<endl;
-            dato2 = IngresoValor();
-            tension_corriente = new MagnitudElectrica(dato1,dato2);
-            tension_corriente->funcionM();
-            cout<<" La potencia es: "<<tension_corriente->getDato4()<<" watt"<<endl;
-            delete tension_corriente;
+            cantidad = 2;
+            texto3[0] = " Calcular la potencia teniendo la tension y corriente";
+            texto3[1]= "la tension ";
+            texto3[2]= "la corriente ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionM();
+            cout<<" La potencia es:"<<magnitud->getDato4()<<" watt"<<endl<<endl;
+            delete magnitud;
             break;
 
             case 2:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Ingrese valor de la corriente "<<endl;
-            dato1 = IngresoValor();
-            dato1 = pow(dato1,2);
-            cout<<" Ingrese valor de la resistencia "<<endl;
-            dato2 = IngresoValor();
-            corriente_resistencia = new MagnitudElectrica(dato1,dato2);
-            corriente_resistencia->funcionM();
-            cout<<" La potencia es: "<<tension_corriente->getDato4()<<" watt"<<endl;
-            delete corriente_resistencia;
+            cantidad = 2;
+            texto3[0]= " Calcular la potencia teniendo corriente y resistencia";
+            texto3[1]= "la corriente ";
+            texto3[2]= "la resistencia ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionMP();
+            cout<<" La potencia es:"<<magnitud->getDato4()<<" watt"<<endl<<endl;
+            delete magnitud;
             break;
 
             case 3:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Ingrese valor de la tension "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese valor de la resistencia "<<endl;
-            dato2 = IngresoValor();
-            dato1 = pow(dato1,2);
-            tension_resistencia = new MagnitudElectrica(dato1,dato2);
-            tension_resistencia->funcionM();
-            cout<<" La potencia es: "<<tension_corriente->getDato4()<<" watt"<<endl;
-            delete tension_resistencia;
+            cantidad = 2;
+            texto3[0]= "Calcular la potencia teniendo la tension y la resistencia";
+            texto3[1]= "la tension ";
+            texto3[2]= "la resistencia ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionDP();
+            cout<<" La potencia es:"<<magnitud->getDato4()<<" watt"<<endl<<endl;
+            delete magnitud;
 
-
+             case 4:
+             break;    
         }
-        cin.ignore();
-        cout<<"Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; getline(cin,consulta);
-        if (consulta == "s" || consulta == "S"){
-            system("clear");
-            continue;
-        }else{
-            cout<<endl;
-            system("clear");
+        mensaje();
+        texto2 = "Desea continuar dentro de la potencia electrica S/n -->  ";
+        
+        if (mensajeFinal(texto2)){
             break;
-        }    
+        }
+            
     }
     
 
  }
 
 void trabajoElectrico(){
-    float dato1,dato2;
-    string texto,consulta;
-    int indice;
-    MagnitudElectrica* trabajo;
-    MagnitudElectrica* determinacion;
-
+     string texto,texto2;
+    string texto3[100];
+    int indice,cantidad;
+    Magnitud* magnitud = nullptr;
 
     while(true){
         texto = " ########E3.coreSoftwarev1###############\n"
@@ -718,44 +740,41 @@ void trabajoElectrico(){
                 "2--> Determinacion de potencia con el contador\n"
                 "3--> Salir\n ";
         indice = IngresoDigito(1,3,texto);
+        system("clear");
         switch(indice){
             case 1:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Ingrese valor de la potencia electrica "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese el valor del tiempo "<<endl;
-            dato2 = IngresoValor();
-            trabajo = new MagnitudElectrica(dato1,dato2);
-            trabajo->funcionM();
-            cout<<" el trabajo electrico es: "<<trabajo->getDato4()<<" Kw/H "<<endl;
-            delete trabajo;
+            cantidad = 2;
+            texto3[0]= " Calcular el trabajo electrico";
+            texto3[1]= "la potencia electrica ";
+            texto3[2]=  "el tiempo ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionM();
+            cout<<" el trabajo electrico es:"<<magnitud->getDato4()<<" Kw/H "<<endl<<endl;
+            delete magnitud;
             break;
 
             case 2:
-            cout<<" ########E3.coreSoftwarev1############### "<<endl;
-            cout<<" Determinacion de potencia con el contador "<<endl;
-            cout<<" Ingrese velocidad del giro del disco contador "<<endl;
-            dato1 = IngresoValor();
-            cout<<" Ingrese valor de la constante del contador "<<endl;
-            dato2 = IngresoValor();
-            determinacion = new MagnitudElectrica(dato1,dato2);
-            determinacion->funcionD();
-            cout<<" La potencia es: "<<determinacion->getDato4()<<endl;
-            delete determinacion;
+            cantidad = 2;
+            texto3[0]= "Calcular la determinacion de potencia con el contador";
+            texto3[1]= "la velocidad del giro del disco contador ";
+            texto3[2]= "la constante del contador ";
+            magnitud = datos(cantidad,texto3);
+            magnitud->funcionD();
+            cout<<" La determinacion de potencia es:"<<magnitud->getDato4()<<endl<<endl;
+            delete magnitud;
             break;
+            
+            case 3:
+            break;
+
          
-        cin.ignore();
-        cout<<"Desea continuar dentro de las Resistencias de un Conductor S/n -->  "; getline(cin,consulta);
-        if (consulta == "s" || consulta == "S"){
-            system("clear");
-            continue;
-        }else{
-            cout<<endl;
-            system("clear");
-            break;
-        }    
         }
-                
+        mensaje();
+         
+        texto2 = "Desea continuar dentro del trabajo electrico S/n -->  ";
+        if(mensajeFinal(texto2)){
+         break;
+        }        
     }
 }
 
@@ -771,65 +790,67 @@ void conversionEnergia(){
                 "2--> La potencia de perdidad\n"
                 "3--> Salir\n";
         indice = IngresoDigito(1,5,texto);
+        system("clear");
         switch(indice){
             case 1:
             texto = "Calcular el rendimiento\n"
                     "1--> Segun la potencia electrica\n"
                     "2--> Segun el trabajo eletrico\n"
                     "3--> Segun el rendimeinto parcial\n";
-            indice2 = IngresoDigito(1,3,texto);        
+            indice2 = IngresoDigito(1,3,texto);
+            system("clear");        
             switch(indice2){
                 case 1:
                 cantidad = 2;
-                texto3[0]="potencia util";
-                texto3[1]="potencia de alimentacion";
+                texto3[0]= " Calcular el rendimiento segun la potencia electrica";
+                texto3[1]="potencia util";
+                texto3[2]="potencia de alimentacion";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionD();
-                cout<<" El valor del rendimiento es: "<<magnitud->getDato4()<<endl;
+                cout<<" El valor del rendimiento es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
-                cout<<"Presione enter......";
                 break;
 
                 case 2:
                 cantidad = 2;
-                texto3[0] = "trabajo util";
-                texto3[1] = "trabajo de alimentacion";
+                texto3[0]= " Calcular el rendimiento segun el trabajo electrico";
+                texto3[1] = "trabajo util";
+                texto3[2] = "trabajo de alimentacion";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionD();
-                cout<<" El valor del rendimiento es: "<<magnitud->getDato4()<<endl;
+                cout<<" El valor del rendimiento es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
-                cout<<"Presione enter......";
                 break;
 
                 case 3:
                 cantidad = 2;
-                texto3[0] = " Rendimiento parcial n1";
-                texto3[1] = " Rendimiento parcial n2";
+                texto3[0]= " Calcular el rendimiento segun el rendimiento parcial";
+                texto3[1] = "rendimiento parcial n1";
+                texto3[2] = "rendimiento parcial n2";
                 magnitud = datos(cantidad,texto3);
                 magnitud->funcionM();
-                cout<<" El valor del rendimiento es: "<<magnitud->getDato4()<<endl;
+                cout<<" El valor del rendimiento es:"<<magnitud->getDato4()<<endl<<endl;
                 delete magnitud;
-                cout<<"Presione enter......";
                 break;
        
             }
             break;
             case 2:
             cantidad = 2;
-            texto3[0]="potencia util";
-            texto3[1]="potencia de alimentacion";
+            texto3[0]= " Calcular la potencia de perdida";
+            texto3[1]="potencia util";
+            texto3[2]="potencia de alimentacion";
             magnitud = datos(cantidad,texto3);
             magnitud->funcionM();
-            cout<<" El valor de la potencia perdida es: "<<magnitud->getDato4()<<endl;
+            cout<<" El valor de la potencia perdida es:"<<magnitud->getDato4()<<endl<<endl;
             delete magnitud;
-            cout<<"Presione enter......";
             break; 
 
             case 3:
             break;
 
         }        
-            
+        mensaje();
         texto2 = "Desea continuar dentro de Conversion de energia y rendimiento S/n -->";
         if (mensajeFinal(texto2)){
             break;

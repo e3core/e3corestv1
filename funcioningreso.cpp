@@ -15,6 +15,8 @@ while(true){
         retorno = stoi(pregunta);
         if (retorno < comp1 || retorno > comp2) {
             throw invalid_argument(" Error de menu");
+            cout<< "!!!!!!!  INTENTE DE NUEVO CON UN DIGITO SEGUN EL MENU   !!!!!!!! "<<endl;
+            cout<<"*******************************************************************"<<endl<<endl;
         }
         break;
 
@@ -22,7 +24,10 @@ while(true){
     // código que maneja la excepción
         catch (invalid_argument& e) {
             system("clear");
-            cout << "Error: Digito erroneo: " << e.what() <<endl;
+            cout<< "          Error: Digito erroneo: " << e.what() <<endl;
+            cout<< "!!!!!!!  INTENTE DE NUEVO CON UN DIGITO SEGUN EL MENU   !!!!!!!! "<<endl;
+            cout<<"*******************************************************************"<<endl<<endl;
+
         }
 }
 return retorno;
