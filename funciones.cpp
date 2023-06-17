@@ -1,6 +1,7 @@
 #ifndef FUNCIONES_CPP
 #define FUNCIONES_CPP
 #include<iostream>
+#include <sstream>
 #include"magnitudes.h"
 #include"magnitud.h"
 #include"serieparalelo.h"
@@ -64,5 +65,17 @@ SerieParalelo* datosSP2(string texto[]){
    
 }
 
+typedef void (Magnitud::*FuncionPtr)();
+
+void funcionDatos(int cantidad,string texto3[],FuncionPtr metodo1,
+string mensajeMagnitud,string mensajeMagnitud2){
+    string mensaje1;
+    Magnitud* magnitud = nullptr;
+    magnitud = datos(cantidad,texto3);
+    (magnitud->*metodo1)();
+    cout<<mensajeMagnitud<<magnitud->getDato4()<<mensajeMagnitud2<<endl<<endl;
+    delete magnitud;
+    mensaje();
+}
 
 #endif
